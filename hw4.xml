@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="file.css"?>
+
+<SetList>
+	<Song>
+		<Artist>Clairo</Artist>
+		<Title>4Ever</Title>
+		<Genre>Indie</Genre>
+		<ReleaseYear>2018</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>LANY</Artist>
+		<Title>Malibu Nights</Title>
+		<Genre>Indie Pop</Genre>
+		<ReleaseYear>2018</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Rex Orange County</Artist>
+		<Title>Pluto Projector</Title>
+		<Genre>Indie Pop</Genre>
+		<ReleaseYear>2019</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Tyler the Creator (feat. Kali Uchis)</Artist>
+		<Title>See You Again</Title>
+		<Genre>Rap</Genre>
+		<ReleaseYear>2017</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Frank Ocean</Artist>
+		<Title>In My Room</Title>
+		<Genre>Hip Hop / Rhythm and Blues</Genre>
+		<ReleaseYear>2019</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>SZA</Artist>
+		<Title>The Weekend</Title>
+		<Genre>Contemporary R and B</Genre>
+		<ReleaseYear>2017</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>BROCKHAMPTON</Artist>
+		<Title>Sugar</Title>
+		<Genre>Hip hop</Genre>
+		<ReleaseYear>2019</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Aminé</Artist>
+		<Title>Spice Girl</Title>
+		<Genre>Rap</Genre>
+		<ReleaseYear>2017</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Mahalia</Artist>
+		<Title>Grateful</Title>
+		<Genre>Rhythm and Blues</Genre>
+		<ReleaseYear>2019</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>The 1975</Artist>
+		<Title>Love It If We Made It</Title>
+		<Genre>Indie Pop</Genre>
+		<ReleaseYear>2018</ReleaseYear>
+	</Song>
+	<Song>
+		<Artist>Troye Sivan</Artist>
+		<Title>Lucky Strike</Title>
+		<Genre>Pop</Genre>
+		<ReleaseYear>2018</ReleaseYear>
+	</Song>
+
+</SetList>
