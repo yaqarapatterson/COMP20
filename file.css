@@ -1,0 +1,31 @@
+SetList {
+	background-color: lavender;
+}
+Artist {
+	font-size:25px;
+	color:blue;
+	font-family: impact;
+}
+
+Song {
+	display:block;
+	padding:30px;
+	text-align:center;
+}
+
+Title {
+	font-size: 20px;
+	display:block;
+	font-family: courier new;
+}
+
+Genre {
+	display:block;
+	font-family: arial;
+	font-size:13px;
+}
+
+ReleaseYear {
+	font-family: arial;
+	font-size:13px;
+}
