@@ -1,0 +1,102 @@
+
+@media only screen and (max-width: 600px) {
+	.header li{
+		padding:15px;
+	 }
+	 body{
+	 	font-size:10px;
+	 }
+	 
+
+
+	/*.footer, .header, .content, .navigation {display:block;}
+	.main{flex-grow:unset; margin:0;}*/
+}
+
+footer {
+	/*position: fixed; */
+	left: 0;
+	bottom: 0;
+   	width: 100%;
+   	color: black;
+   	background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+
+}
+
+footer ul {
+	 list-style-type: none;
+
+}
+
+.title {
+	color:  #443FD7;
+	font-family: tahoma;
+	margin:0px;
+	padding:10px;
+	font-size: 35px;
+	font-weight: bold;
+	box-sizing: border-box;
+	
+}
+
+p {
+	font-family: tahoma;
+
+}
+
+.header ul{
+	text-align:center;
+	list-style-type: none;
+	padding:25px;
+	background-color: #443FD7;
+
+}
+
+
+.header li {
+	font-family: tahoma;
+	font-size: 25px;
+	display:inline;
+	margin:20px;
+	padding:25px;
+	box-sizing: border-box;
+
+}
+
+
+
+.header a:hover{
+	color:#AAAAAD;
+}
+
+.header a {
+	text-decoration: none;
+	color:white;
+	
+}
+
+#hours {
+	font-family: tahoma;
+	
+}
+
+#hours p {
+	display:block;
+
+}
+
+
+.contactinfo h3 {
+	font-family: tahoma;
+	font-size: 25px;
+}
+
+.services h1 {
+	font-family: tahoma;
+}
+
+.consultations h1 {
+	font-family: tahoma;
+}
