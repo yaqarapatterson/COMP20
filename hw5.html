@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Joe's Hotdogs</title>
+</head>
+
+<body>
+
+	<h1> Welcome to Joe's Hotdogs! </h1>
+	<p style="font-weight: bold; font-size: 25px"> Your Order </p>
+
+	<script>
+		var hotdogs = prompt("How many hotdogs?");
+		var fries = prompt("How many fries?");
+		var sodas = prompt("How many sodas?")
+
+		var hotdogPrice = (hotdogs * 3.25)
+		var friesPrice = (fries * 2.00)
+		var sodasPrice = (sodas * 1.50)
+
+		document.write("# Hotdogs:" + " " + hotdogs + " at $3.25 " + "is $" 
+			+ hotdogPrice.toFixed(2) + "<br>");
+		document.write("# Fries:" + " " + fries + " at $2.00 " + "is $" 
+			+ friesPrice.toFixed(2) + "<br>");
+		document.write("# Sodas:" + " " + sodas + " at $1.50 " + "is $"
+	 		+ sodasPrice.toFixed(2) + "<br>"); 
+
+		var subtotal = hotdogPrice + friesPrice + sodasPrice; 
+
+
+		var discount = 0;
+		var tax;  
+
+		if(subtotal >= 20) 
+		{
+			document.write("You qualified for our 10% discount. <br>")
+			discount = subtotal * .10; 
+			subtotal = subtotal - discount; 
+		} 
+
+		document.write("Subtotal:" + " " + "$" + subtotal.toFixed(2) + "<br>");
+
+		tax = subtotal * .0625; 
+		document.write("Meals Tax: $" + tax.toFixed(2) + "<br>");
+
+		var total = 0; 
+
+		total = subtotal + tax; 
+
+		document.write("Total:" + " " + "$" + total.toFixed(2)); 
+
+	
+	</script>
+
+</body>
+
+
+</html>
