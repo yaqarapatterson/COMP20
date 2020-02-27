@@ -1,0 +1,146 @@
+<!DOCTYPEhtml>
+<html>
+<head> <title> Amicable Numbers</title>
+	<link rel="stylesheet" type= "text/css" href="hw6.css">
+	<h1 style="font-size: 40px"> Amicable Numbers </h1> 
+
+<script> 
+	document.write("<p style > Type in a number in each text box to find out if they are amicable numbers. <p>")
+
+	function isFactor(number, testnumber) {
+
+		var result = number % testnumber; 
+
+		if (result == 0) {
+			return true; 
+		}
+	
+	}
+	
+    /* ---- isFactor() test ------- 
+
+	if (isFactor(25, 5) == true) {
+		document.write("factor" + "<br>");
+	}
+
+	if (isFactor(32, 5) == true) {
+		document.write("factor" + "<br/>")
+	} else {
+		document.write("false" + "<br/>")
+	}
+    */
+
+
+	function showFactors(array) {
+
+		for (i = 0; i < array.length; i++) {
+			document.write(array[i] + "<br/>"); 
+		}
+		
+		document.write("<br/>"); 
+	}
+
+    /* --- showFactors test --- 
+	var factors = new Array;
+	factors = [2, 3, 4, 5];
+	showFactors(factors);
+
+	*/
+
+    function addFactors(array) {
+    	var sum = 0; 
+
+    	for (k = 0; k < array.length; k++) {
+    		sum = sum + array[k]; 
+    	}
+
+    	return sum; 
+    }
+
+    /* --- addFactors test --- 
+    var factors = new Array;
+	factors = [2, 3, 4, 5];
+	document.write("sum: " + addFactors(factors)); 
+	*/
+
+    function getFactors(number) {
+
+    	var factors = new Array(); 
+
+    	for (h = 1; h < number; h++){
+    		if (isFactor(number, h) == true) {
+    			factors.push(h); 
+    		}
+    	}
+
+    	return factors; 
+    }
+
+    /* --- getFactorstest -- 
+    var new_array = getFactors(10); 
+
+    for (m = 0; m < new_array.length; m++) {
+    	document.write(new_array[m] + " "); 
+    }
+    document.write("<br/>");
+    
+    */
+  	//function isAmicable(){
+
+    //}
+
+    function check() {
+	 	var num1 = document.getElementById("num1").value; 
+	 	var num2 = document.getElementById("num2").value; 
+
+	 	//document.write(num1);
+
+		var factors1 = getFactors(num1);
+
+		/*
+		for (t = 0; t < factors1.length; t++) {
+			document.write(factors1[t] + " "); 
+		}
+		*/
+		//document.write(factors1.length + " ");
+
+		var factors2 = getFactors(num2);
+
+
+		if ((addFactors(factors1) == num2) && (addFactors(factors2) == num1)) {
+			alert("Amicable");
+		} else {
+			alert("Sorry, not amicable"); 
+		}
+
+		//for (t = 0; t < factors1.length; t++) {
+			//document.write(factors1[t] + " "); 
+		//}
+        
+	}
+		
+</script>
+
+</head>
+
+
+<body> 
+	<form>
+		Number 1 &nbsp;   
+			<script type="text/javascript">
+				document.write ('<input type= "text" name= "num1" id= "num1">');
+			</script>
+			<br/>
+		Number 2 &nbsp; 
+			<script type="text/javascript">
+				document.write ('<input type= "text" name= "num2" id= "num2">');
+			</script>
+				<br/><br/>
+			
+		<input type= "button" value= "Submit" id="btn1" onclick="check()" style="font-size:24px">
+			
+			
+	</form>
+	</body>
+
+</html>

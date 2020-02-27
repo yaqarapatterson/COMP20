@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Quick Pick </title>
+
+	<h1> Quick Pick </h1>
+	<script>
+
+		var array = new Array();
+
+        /* --- picks 5 random #s and adds them to the array ---- */
+		for (i = 0; i < 5; i++) {
+			
+			n = Math.random() * 47 + 1 ;
+			number = parseInt(n); 
+			array.push(number); 
+
+		}
+			
+		/* ----- picks random lucky ball number ------  */
+
+		for (t = 0; t < 1; t++) {
+
+			lucky = Math.random() * 17 + 1; 
+			lucky = parseInt(lucky); 
+			document.write("Lucky Ball: " + lucky + "<br/>"); 
+		}
+
+		document.write("<br/>");
+
+
+		for (k = 0; k < array.length; k++) {
+
+			document.write(array[k] + " ");
+		}
+
+		document.write("<br/>");
+
+
+        /* -- sort numbers in the array --- */
+		new_array = array.sort(function(a,b){return a-b});
+
+		 
+		/* --- display #s in array --- */
+		for (e = 0; e < new_array.length; e++) {
+
+			document.write(new_array[e] + " ");
+
+		}
+
+		document.write("<br/>");
+
+        
+		function compare() {
+
+			var guesses = document.getElementById("guess").value;
+
+			guesses = guesses.split(" ");
+
+			var correctnums = 0; 
+
+			for (f = 0; f < new_array.length; f++) {
+				for (g = 0; g < guesses.length; g++) {
+					if (new_array[f] == guesses[g]) {
+						correctnums++; 
+						break;
+					}
+				}
+			}
+
+			var luckyguess = document.getElementById("luckyguess").value;
+
+			var correctlucky = 0; 
+
+			if (lucky == luckyguess) {
+				correctlucky++; 
+			}
+
+			if (correctnums == 5 && correctlucky == 1) {
+				alert("You've won $7,000 a WEEK for LIFE!");
+			} else if (correctnums == 5) {
+				alert("You've won $25,000 a YEAR for LIFE!");
+			} else if (correctnums == 4 && correctlucky == 1) {
+				alert("You've won $5,000");
+			} else if (correctnums == 4) {
+				alert("You've won $200");
+			} else if (correctnums == 3 && correctlucky == 1) {
+				alert("You've won $150");
+			} else if (correctnums == 3) {
+				alert("You've won $20");
+			} else if (correctnums == 2 && correctlucky == 1) {
+				alert("You've won $25");
+			} else if (correctnums == 2) {
+				alert("You've won $3");
+			} else if (correctnums == 1 && correctlucky == 1) {
+				alert("You've won $6");
+			} else if (correctnums == 0 && correctlucky == 1) {
+				alert("You've won $4");
+			}
+		}
+
+		
+
+	</script>
+
+</head>
+<body>
+
+		<form name = "payoutcalc"> 
+			<br/>
+			Enter 5 numbers between 1 and 48 &nbsp; &nbsp; 
+			<script type="text/javascript">
+				document.write('<input type="text" name="guess" id= "guess">')
+			</script>
+				</br>
+			Enter a number between 1 and 18 &nbsp; &nbsp; 
+			<script type="text/javascript">
+				document.write('<input type= "text" name= "luckyguess" id= "luckyguess">')
+			</script>
+				<br/><br/>
+
+			<input type= "button" value= "Submit"
+				onclick = "compare()">
+			
+
+		</form>
+
+	
+
+</body>
+</html>
