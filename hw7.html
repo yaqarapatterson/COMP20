@@ -1,0 +1,274 @@
+<!DOCTYPEhtml>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jade Delight</title>
+</head>
+<style> 
+	body {
+		background-color:lightblue;
+	}
+
+	p {
+		font-size:20px;
+		font-weight: bold;
+	}
+
+	h1 {
+		font-weight: bold;
+	}
+</style>
+<body>
+
+<script language="javascript">
+
+function MenuItem(name, cost) {
+
+	this.name = name;
+	this.cost = cost;
+}	
+
+menuItems = new Array(
+	new MenuItem("Chicken Chop Suey", 4.5),
+	new MenuItem("Sweet and Sour Pork", 6.25),
+	new MenuItem("Shrimp Lo Mein", 5.25),
+	new MenuItem("Moo Shi Chicken", 6.5),
+	new MenuItem("Fried Rice", 2.35)
+);
+
+
+
+
+function makeSelect(name, minRange, maxRange) {
+
+	var t= "";
+	t = "<select name='" + name + "' onchange='choose(this.value, this.name)' size='1'>";
+	for (j=minRange; j<=maxRange; j++)
+	   t += "<option >" + j + "</option>";
+	t+= "</select>"; 
+	return t; 
+
+}
+
+function choose(amount, name) {
+	//alert('start');
+
+
+    var row = name[4];
+	var price = menuItems[row].cost;
+	var total = amount * price;
+
+	document.getElementsByName('cost')[row].value = total.toFixed(2);
+
+
+	var subtotal = 0;
+
+	// -- calculates totals -- //
+	for (t = 0; t < 5; t++){
+	  item_price = document.getElementsByName('cost')[t].value;
+	  if (document.getElementsByName('cost')[t].value != "") {
+		subtotal += parseFloat(item_price);
+	  }
+	}
+
+	//-- displays subtotal, tax and total to corresponding textboxes -- //
+	document.getElementById("subtotal").value = subtotal.toFixed(2);
+	document.getElementById("tax").value = (subtotal * 0.0625).toFixed(2);
+	document.getElementById("total").value = (subtotal * 1.0625).toFixed(2);
+
+}	
+
+
+function validation() {
+
+	//validates that last name and 
+	//phone number is entered -- WORKS
+
+
+	firstName = document.getElementsByName("fname")[0].value;
+	lastName = document.getElementsByName("lname")[0].value;
+	num = document.getElementsByName("phone")[0].value;
+
+	if (lastName=="") {
+		alert("The name is required");
+		return false; 
+	}
+
+	if (num=="") {
+		alert("A phone number is required");
+		return false;
+	}
+
+	if (num.length < 7) {
+		alert ("Please enter a valid number (XXX)-XXX-XXXX"); 
+		return false;
+	}
+
+	// -- calculating how much time if method is pickup or delivery -- //
+	d = new Date();
+	hrs = d.getHours();
+	minutes = d.getMinutes();
+
+	var method = document.getElementsByName("p_or_d");
+
+	if (method[0].checked) {
+		route = "Pickup"; 
+	}
+	if (method[1].checked) {
+		route = "Delivery";
+	}
+
+	var current_time = hrs + " " + minutes;
+	var mins = 0; 
+
+	
+	if (method[0].checked) {
+		mins = minutes + 15;
+
+		if (hrs > 12) {
+			newhrs = hrs - 12;
+		} else {
+			newhrs = hrs;
+		}
+
+		if (mins > 60) {
+
+			newMins = mins - 60;
+			newhrs ++;
+
+		} else {
+			newMins = mins;
+		}
+
+		if (newMins < 10){
+			newMins = "0" + newMins;
+		}
+
+		calcTime = newhrs + ":" + newMins;
+
+			
+		//alert("Pickup time: " + calcTime);
+
+	}
+	
+	if (method[1].checked) {
+		
+		mins = minutes + 30;
+		
+		if (hrs > 12) {
+			newhrs = hrs - 12;
+		} else {
+			newhrs = hrs;
+		}
+
+		if (mins > 60) {
+
+			newMins = mins - 60;
+			newhrs ++;
+
+		} else {
+			newMins = mins;
+		}
+
+		if (newMins < 10){
+			newMins = "0" + newMins;
+		}
+
+		calcTime = newhrs + ":" + newMins;
+
+
+		//alert("Delivery time: " + calcTime);
+		
+	}
+	
+
+	//if the order was delivery, the street and city are required -- // 
+	st = document.getElementsByName("street")[0].value; 
+	cty = document.getElementsByName("city")[0].value; 
+
+	if (route == "delivery" && st=="") {
+		alert("Street is required");
+		return false
+	}
+
+	if (route == "delivery" && cty=="") {
+		alert("City is required");
+		return false
+	}
+
+	// --- display message that thanks user for their order, displays the pickup or delivery time 
+	// and the total amount of the order --
+	document.write("<h1> Order Summary </h1>" + "<br/>");
+	document.write("Thank you for your order! <br/>")
+	document.write("Name: " + firstName + " " + lastName + "<br/> ");
+	document.write("Address:" + "<br/>" + st + "<br/>" + cty + "<br/>") 
+	document.write("Phone Number: " + num + "<br/>");
+	
+
+	document.write("Estimated " + route + " Time: " + calcTime);
+	
+
+	//not displaying total and am not sure why
+	var final_total = document.getElementById("total").value;
+	document.write(final_total);
+
+	return false;
+}
+
+</script>
+
+<h1 style="background-color: white; color:#2D9BCE; font-family:verdana">Jade Delight</h1>
+<form onsubmit="return validation()">
+
+	<p>First Name: <input type="text"  name='fname' /></p>
+	<p>Last Name*:  <input type="text"  name='lname' /></p>
+	<p>Street: <input type="text"  name='street' /></p>
+	<p>City: <input type="text"  name='city' /></p>
+	<p>Phone*: <input type="text"  name='phone' /></p>
+
+	<p> 
+		<input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup  
+		<input type="radio"  name='p_or_d' value = 'delivery'/>
+		Delivery
+	</p>
+
+	<table border="0" cellpadding="3">
+	  <tr>
+	    <th>Select Item</th>
+	    <th>Item Name</th>
+	    <th>Cost Each</th>
+	    <th>Total Cost</th>
+	  </tr>
+
+	<script language="javascript">
+
+	   
+	  var s = "";
+	  for (i=0; i < menuItems.length; i++) {
+		  s += "<tr><td>";
+		  s += makeSelect("quan" + i, 0, 10);
+		  s += "</td><td>" + menuItems[i].name + "</td>";
+		  s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
+		  s += "<td>$<input type='text' name='cost'/></td></tr>";
+	  }
+	  document.writeln(s);
+
+	  
+	</script>
+
+	</table>
+
+<p>Subtotal: 
+   $<input type="text"  name='subtotal' id="subtotal" />
+</p>
+<p>Mass tax 6.25%:
+  $ <input type="text"  name='tax' id="tax" />
+</p>
+<p>Total: $ <input type="text"  name='total' id="total" />
+</p>
+
+<input type = "submit" value = "Submit Order"/>
+
+</form>
+</body>
+</html>
