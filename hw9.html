@@ -1,0 +1,166 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+	<title> </title>
+	</head>
+
+<body>
+	<script>
+		var setList = [ 
+		   {
+			"artist" : ["Clairo"],
+			"title" : "4Ever",
+			"genre" : ["Indie Pop"],
+			"year" : 2018,
+			}, 		
+			{
+			"artist" : ["Brockhampton", " Ryan Beatty"],
+			"title" : "Sugar",
+			"genre" : ["Hip Hop", "Alternative R&B"],
+			"year" : 2018,
+			},
+			{
+			"artist" : ["Troye Sivan"],
+			"title" : "Lucky Strike",
+			"genre" : ["Pop"],
+			"year" : 2018,
+			},
+			{
+			"artist" : ["The 1975"],
+			"title" : "Love It If We Made It",
+			"genre" : ["Indie Pop"],
+			"year" : 2018,
+			},
+			{
+			"artist" : ["LANY"],
+			"title" : "Malibu Nights",
+			"genre" : ["Indie Pop"],
+			"year" : 2018,
+			},
+			{
+			"artist" : ["Conan Gray"],
+			"title" : "Maniac",
+			"genre" : ["Pop"],
+			"year" : 2019,
+			},
+			{
+			"artist" : ["BENEE"],
+			"title" : "Find An Islan",
+			"genre" : ["Indie Pop"],
+			"year" : 2019,
+			},
+			{
+			 "artist" : ["J. Cole"],
+			"title" : "She Knows",
+			"genre" : ["Hip Hop", "R&B"],
+			"year" : 2013,
+			},
+			{
+			"artist" : ["Aminé"],
+			"title" : "BLACKJACK",
+			"genre" : ["Hip Hop"],
+			"year" : 2019,
+			},
+			{
+			"artist" : ["Rex Orange County"],
+			"title" : "Pluto Projector",
+			"genre" : ["Hip Hop", "Indie Pop"],
+			"year" : 2019,
+			}
+
+		];
+
+
+		// ------ Part 2 -- serialize and display ---------
+		for (i = 0; i < setList.length; i++) {
+			song = JSON.stringify(setList[i]);
+			document.write(song + "<br/>");			
+		}
+	
+		for (t = 0; t < setList.length; t++) {
+			songObj = JSON.parse(song);		
+		}
+
+		document.write("<hr/>");
+
+		// ----- Part 3 -- User Friendly Display ---------
+
+		document.write("<table style='width:100%;'><tr>");
+		document.write("<th>Title</th>");
+		document.write("<th>Artist</th>");
+		document.write("<th>Genre</th>");
+		document.write("<th>Year</th>");
+		document.write("</tr>");
+		document.write("</table>");
+      
+
+		document.write("<table style='width:100%'>");
+		for (n = 0; n < setList.length; n++) {
+			document.write("<tr>");
+			document.write("<td>" + setList[n].title + "</td>");
+			document.write("<td>" + setList[n].artist + "</td>");
+			document.write("<td>" + setList[n].genre + "</td>");
+			document.write("<td style='text-align:left; padding-right:37px'>" + setList[n].year + "</td>");
+			document.write("</tr>");
+			
+		}
+		document.write("</table>");
+		document.write("<br/>");
+		document.write("<hr/>");	
+		
+		
+		// ------- Part 4 -- Filter the data -----------------
+
+
+		    //checkGenre checks whether a given song's genre in the setlist
+		    //matches the genre the user picks to filter by and prints out the song
+		function checkGenre(genre_pick) {
+			document.write("<b>" + genre_pick + " Songs" + "</b><br/><hr/>");
+			for(t=0; t < setList.length; t++) {
+				for (g in setList[t].genre) {
+					if (setList[t].genre[g] == genre_pick) {
+						document.write("<b>" + setList[t].title + "</b><br/>");
+						document.write("Artist(s): " + setList[t].artist + "<br/>");
+						document.write("Genre(s): " + setList[t].genre + "<br/>");
+						document.write("Released: " + setList[t].year + "<br/><br/>");
+					}
+				}
+			}
+		}
+
+			//calls the checkGenre function and is the function called when 
+			//user clicks filter button 
+		function filter() {
+			var genre = document.getElementById("genres").value;
+				if (genre == "Indie Pop") {
+					checkGenre("Indie Pop");
+				} else if (genre == "Pop") {
+					checkGenre("Pop");
+				} else if (genre == "Hip Hop") {
+					checkGenre("Hip Hop");
+				} else if (genre == "R&B") {
+					checkGenre("R&B");
+				} else if (genre == "Alternative R&B") {
+	 				checkGenre("Alternative R&B");
+				}
+			
+		}
+	</script>
+
+
+	<form onsubmit="filter()">
+		<label for="genres">Pick a genre</label>
+		<br/>
+		<select id="genres">
+			<option value="Indie Pop">Indie Pop</option>
+			<option value="Pop">Pop</option>
+			<option value="Hip Hop">Hip Hop</option>
+			<option value="R&B">R&B</option>
+			<option value="Alternative R&B">Alternative R&B</option>
+		</select>
+		<input type ="submit" value="Filter"/>
+	</form>
+	
+</body>
+
+</html>
