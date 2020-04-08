@@ -1,0 +1,83 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+    <title>API practice</title>
+	<meta charset="utf-8"/>
+  
+    <script>
+		function getContent() {
+    	//make instance of object
+ 		request = new XMLHttpRequest();
+
+ 		//specifies the method and URL of request
+ 		request.open('GET', "https://api.nytimes.com/svc/movies/v2/reviews/all.json?order=by-title&api-key=yekNsF9HGvz3RnAqvHTwwKdHEvAeip3b", true);
+
+
+ 		request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+	
+					result = request.responseText;
+					alert(result);
+					list = JSON.parse(result);
+
+					document.getElementById("data").innerHTML = "1. " + list.results[0].headline;
+					document.getElementById("data2").innerHTML = "2. " + list.results[1].headline;
+					document.getElementById("data3").innerHTML = "3. " + list.results[2].headline;
+					document.getElementById("data4").innerHTML = "4. " + list.results[3].headline;
+
+				
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+				}
+			}
+			// Step 4: fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+		
+		
+    </script>
+
+</head>
+<body onload="getContent()">
+	<p><b>Examples of Movie Review Headlines</b></p>
+	<p> Data provided by The New York Times </p>
+	<hr/>
+	<div id="data">Loading...</div>
+	<p id="data2"></p>
+	<p id="data3"></p>
+	<p id="data4"></p>
+
+	<hr/>
+
+	<p style="padding:30px"> I chose a New York Times API that allows developers to access different forms of data from the New York Times such as movie reviews, articles, and others. 
+
+	<br/><br/>
+	This is where I found the API : https://developer.nytimes.com/apis
+	through searching through a list of APIs I found on https://github.com/public-apis/public-apis
+
+    <br/><br/>
+	The specific options I chose for the API request were to find all critics' movie picks and it was ordered 
+	by title. I chose to access some examples of headlines through the list of results given by using 
+	document.getElementById. 
+ 
+ 	<br/><br/>
+	I think that this API offers a lot of different forms of archived data about movies that could
+	be useful on a website trying to give its users information about past movie reviews or a website that 
+	gives users the ability to search through these reviews based on options such as
+	critic name or a movie's opening date. </p>
+
+</body>
+</html>
